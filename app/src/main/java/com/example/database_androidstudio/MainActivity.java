@@ -87,13 +87,13 @@ public class MainActivity extends AppCompatActivity {
         String uname = userName.getText().toString();
         String pw = password.getText().toString();
 
-        long newRowid = dbHelper.addInfo(uname,pw);
+        long newRowId = dbHelper.addInfo(uname,pw);
 
         Context context = getApplicationContext();
         CharSequence text = "Success";
         CharSequence text1 = "Fail";
         int duration = Toast.LENGTH_SHORT;
-        if(newRowid > 0){
+        if(newRowId > 0){
             Toast toast = Toast.makeText(context,text,duration);
             toast.show();
         }else{
@@ -101,4 +101,32 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
     }
+
+    public void selectAll(View view){
+
+    }
+
+    public void delete(View view){
+        String uname = userName.getText().toString();
+
+        //dbHelper.deleteInfo(uname);
+        List delete = dbHelper.readAllInfo();
+
+        Context context = getApplicationContext();
+        CharSequence text = "Success";
+        CharSequence text1 = "Fail";
+        int duration = Toast.LENGTH_SHORT;
+
+
+    }
+
+    /*public void deleteInfo(String userName){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String selection = UsersMaster.Users.COLUMN_NAME_USERNAME + "LIKE ?";
+        String[] selectionArgs = {userName};
+
+        db.delete(UsersMaster.Users.TABLE_NAME,selection,selectionArgs);
+    }*/
 }
